@@ -1,6 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-
 const Navbar = () => {
 	return (
 		<div id="page-top"> 
@@ -35,13 +33,13 @@ const Navbar = () => {
     <section class="page-section" id="about">
         <div class="d-flex container">
             <div>
-                <img src="img/portfolio/bravo.gif" height="500px" width="500px" />
+                <img src="img/portfolio/bravo.gif" alt="1" height="500px" width="500px" />
             </div>
         <div>
               <br />
               <br />
         <span class=" firas">
-            Je suis Msign et je suis ici pour aider les personnes sourdes<br />
+            Je suis Msign et je suis ici pour aider les personnes sourdes.<br />
         </span>
         <br />
         <br />
@@ -76,9 +74,9 @@ const Navbar = () => {
                         <br />
                         <br />
 
-                        <img src="/img/nrp.gif" height="365px" width="400px" />
+                        <img src="/img/nrp.gif" alt="2" height="365px" width="400px" />
                         <div class="app">
-                            <img src="/img/app.gif" height="65px" width="70px" />
+                            <img src="/img/app.gif" alt="3" height="65px" width="70px" />
                         </div>
                     </div>
 
@@ -86,7 +84,7 @@ const Navbar = () => {
                     <div>
                         <br />
                         <br />
-                        <img src="/img/Device.png" height="300px" width="500px" />
+                        <img src="/img/Device.png" alt="4" height="300px" width="500px" />
                         <br />
                         <br />
                         <br />
@@ -180,7 +178,7 @@ const Navbar = () => {
             </div>
             <br /> <br />
             <div class="text-center">
-                <img src="/img/portfolio/bonjour.gif" height="500px" width="500px" />
+                <img src="/img/portfolio/bonjour.gif"  alt="5" height="500px" width="500px" />
             </div>
         </div>
     </ div>
