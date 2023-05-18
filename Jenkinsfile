@@ -1,35 +1,37 @@
 
 pipeline {
   environment {
-    dockerimagename = "med00723/projet"
-    dockerImage = ""
+    registry = "med00723/projet"
+    dockerImage = ''
   }
   agent any
   stages {
-    stage('Checkout Source') {
+    stage('Cloning Git') {
       steps {
         git (url: 'https://github.com/med00723/Projet.git', branch: 'master', changelog: true, credentialsId: 'first', poll: true)
       }
     }
-    stage('Build image') {
+    stage('Build') {
+       steps {
+         dir ('/msign/backend')
+         sh 'docker build -t backend .'
+       }
+    }
+    stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build dockerimagename
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-    stage('Pushing Image') {
-      environment {
-               registryCredential = 'dockerhub-credentials'
-           }
+    stage('Deploy Image') {
       steps{
-        script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("latest")
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
           }
         }
       }
     }
-
   }
 }
