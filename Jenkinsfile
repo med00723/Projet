@@ -14,7 +14,7 @@ pipeline {
     stage('Build') {
        steps {
          
-         sh 'cd msign/backend'
+         sh 'cd /msign/backend'
             sh 'docker build -t backend .'
          }
        }
