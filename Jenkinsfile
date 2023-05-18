@@ -11,29 +11,6 @@ pipeline {
         git (url: 'https://github.com/med00723/Projet.git', branch: 'master', changelog: true, credentialsId: 'first', poll: true)
       }
     }
-    stage('Build') {
-       steps {
-         
-         sh 'cd /msign/backend'
-            sh 'docker build -t backend .'
-         }
-       }
-    }
-    stage('Building image') {
-      steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
-    stage('Deploy Image') {
-      steps{
-         script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }
+  }
   }
 }
