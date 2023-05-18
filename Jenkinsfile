@@ -13,8 +13,10 @@ pipeline {
     }
     stage('Build') {
        steps {
-         dir ('/msign/backend')
-         sh 'docker build -t backend .'
+         
+         dir ('/msign/backend'){
+            sh 'docker build -t backend .'
+         }
        }
     }
     stage('Building image') {
