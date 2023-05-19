@@ -20,7 +20,7 @@ pipeline {
         steps {  
             
     //      sh 'docker images'
-            sh 'docker build -t med00723/backend:v3 "./msgin/backend"'
+            sh 'docker build -t med00723/backend:v3 "./msign/backend"'
         }
     }
 
