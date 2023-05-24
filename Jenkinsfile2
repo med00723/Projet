@@ -1,20 +1,21 @@
 pipeline {
-
-  agent any
-
-  stages {
-
-    stage('Checkout Source') {
-      steps {
-        git 'https://github.com/med00723/Projet.git'
-      }
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
+     environment {
+            CI = 'true'
+        }
     stages {
         stage('Build') {
             steps {
                 sh 'npm install'
             }
         }
-   }
-  }
+        
+                
+
+    }
 }
