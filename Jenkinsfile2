@@ -5,19 +5,17 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-     environment {
-            CI = 'true'
-        }
+    
+       agent any
     stages {
         stage('Build') {
             steps {
-            
-                dir('/msign/client'){
-                 npm install
-                 }
-               
+                dir('/msign/client') {
+                    npm install
+                }
             }
         }
+    }
         
                 
 
