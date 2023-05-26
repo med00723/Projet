@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+<<<<<<< HEAD
     "test": "./node_modules/.bin/mocha"
+=======
+    "test": "node node_modules/mocha/bin/mocha"
+>>>>>>> origin/master
   },
   "author": "",
   "license": "ISC",

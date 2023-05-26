@@ -18,3 +18,5 @@ echo 'application renders satisfactorily. This command actually invokes the test
 echo 'runner Jest (https://facebook.github.io/jest/).'
 set -x
 npm test
+npm test
+npm test
