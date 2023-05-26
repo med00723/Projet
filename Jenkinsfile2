@@ -23,16 +23,11 @@ pipeline {
               }
         }
     }
-    
-    stage('Test'){
-        steps {  
-          
-            
-        }
-    }
 
 
   }
 
 }
+
+
 
