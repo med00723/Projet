@@ -18,7 +18,7 @@ pipeline {
 
     stage('Build image'){
         steps {
-            dir('/var/lib/jenkins/workspace/new/'){
+            dir('/msign/backend'){
                 sh 'npm install'
               }
         }
