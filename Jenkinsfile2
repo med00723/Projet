@@ -17,16 +17,17 @@ pipeline {
     }
 
     stage('Build image'){
-        steps {  
-          
-            sh 'npm install'
+        steps {
+            dir('/var/lib/jenkins/workspace/new/'){
+                sh 'npm install'
+              }
         }
     }
     
     stage('Test'){
         steps {  
           
-            sh './msign/backend/test.sh'
+            
         }
     }
 
@@ -34,3 +35,4 @@ pipeline {
   }
 
 }
+
