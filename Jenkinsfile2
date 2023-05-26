@@ -16,11 +16,10 @@ pipeline {
       }
     }
 
-    stage('Build docker image'){
+    stage('Build image'){
         steps {  
-            
-    //      
-            sh 'npm install "./msign/backend"'
+          
+            sh 'npm install'
         }
     }
 
