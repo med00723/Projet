@@ -1,22 +1,30 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
-    
-    stages {
-        stage('Build') {
-            steps {
-                dir('/msign/client') {
-                    npm install
-                }
-            }
-        }
-    }
-        
-                
 
+pipeline {
+
+  environment {
+    dockerimagename = "med00723/backend"
+    dockerImage = ""
+  }
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/med00723/Projet.git'
+      }
     }
+
+    stage('Build docker image'){
+        steps {  
+            
+    //      
+            sh 'npm install "./msign/backend"'
+        }
+    }
+
+
+  }
+
 }
