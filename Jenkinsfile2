@@ -26,7 +26,7 @@ pipeline {
     stage('Test'){
         steps {
             dir('/home/jenkins/Projet/msign/backend'){
-                sh test.sh
+                sh 'npm test'
               }
         }
     }
