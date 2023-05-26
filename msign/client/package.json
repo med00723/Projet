@@ -7,11 +7,8 @@
 	"private": true,
 	"homepage": ".",
 	"main": "index.js",
-<<<<<<< HEAD
 	"proxy": "http://webapp-service:8081/",
-=======
 	"proxy": "http://webapp-service:8081",
->>>>>>> a15b9882f86271bf85df779e1424e74bfe071278
 	"dependencies": {
 		"@nkalpak/react-ios-pwa-prompt": "^1.8.7",  
 		"@testing-library/jest-dom": "^5.16.2",
