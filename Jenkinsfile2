@@ -18,7 +18,7 @@ pipeline {
 
     stage('Build image'){
         steps {
-            dir('/msign/backend'){
+            dir('msign/backend'){
                 sh 'npm install'
               }
         }
