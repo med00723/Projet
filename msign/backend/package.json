@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha index.js"
+    "test": "mocha './controllers/crudController.js'"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +19,6 @@
   },
   "devDependencies": {
     "mocha": "^10.2.0"
+  
   }
 }
