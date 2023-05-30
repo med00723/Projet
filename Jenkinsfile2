@@ -39,12 +39,14 @@ pipeline {
     }
     stage('Push images'){
         steps {  
+          sh 'node --version'
             
     //     
         }
     }
     stage('deploy image'){
         steps {  
+           sh 'node --version'
             
     //      
         }
