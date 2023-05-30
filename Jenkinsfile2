@@ -18,14 +18,14 @@ pipeline {
 
     stage('Build image'){
         steps {
-            dir('/home/jenkins/Projet/msign/backend'){
+            dir('msign/backend'){
                 sh 'npm install'
               }
         }
     }
     stage('Test'){
         steps {
-            dir('/home/jenkins/Projet/msign/backend'){
+            dir('msign/backend'){
                 sh 'npm test'
               }
         }
