@@ -37,6 +37,18 @@ pipeline {
             sh 'docker build -t med00723/backend:v4 "./msign/backend"'
         }
     }
+    stage('Push images'){
+        steps {  
+            
+    //     
+        }
+    }
+    stage('deploy image'){
+        steps {  
+            
+    //      
+        }
+    }
 
 
   }
