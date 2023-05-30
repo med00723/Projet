@@ -33,7 +33,7 @@ pipeline {
      stage('Build image docker '){
         steps {
             dir('msign/backend'){
-                sh 'docker buildx build -t med00723/backend:v3 '
+                sh 'docker  build -t med00723/backend:v42 '
               }
         }
     }
