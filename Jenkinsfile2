@@ -30,13 +30,17 @@ pipeline {
               }
         }
     }
-    stage('Build docker image'){
-        steps {  
-            
-    //      sh 'docker images'
-            dockerImage = docker build -t med00723/backend:v4 ./msign/backend
+
+
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerimagename
         }
+      }
     }
+
+
     stage('Push images'){
         steps {  
           sh 'node --version'
