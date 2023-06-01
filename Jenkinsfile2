@@ -45,12 +45,17 @@ pipeline {
     }
 
 
-    stage('Push images'){
-        steps {  
-          sh 'node --version'
-            
-    //     
+    stage('Pushing Image') {
+      environment {
+               registryCredential = 'dockerhub-credentials'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+            dockerImage.push("latest")
+          }
         }
+      }
     }
     stage('deploy image'){
         steps {  
