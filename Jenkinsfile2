@@ -34,7 +34,7 @@ pipeline {
         steps {  
             
     //      sh 'docker images'
-            dockerImage = sh 'docker build -t med00723/backend:v4 "./msign/backend"'
+            dockerImage = docker build -t med00723/backend:v4 ./msign/backend
         }
     }
     stage('Push images'){
