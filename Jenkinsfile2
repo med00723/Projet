@@ -37,7 +37,7 @@ pipeline {
       steps{
         script {
           dir('msign/backend'){
-            dockerImage = docker.build dockerimagename:$BUILD_NUMBER
+            sh 'docker build -t med00723/backend:$BUILD_NUMBER .'
             
           }
           
