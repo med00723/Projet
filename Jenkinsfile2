@@ -53,7 +53,8 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push
+            
+            sh 'docker push  med00723/backend:$BUILD_NUMBER .'
           }
         }
       }
