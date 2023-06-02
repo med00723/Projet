@@ -54,7 +54,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push valaxy/nodeapp:$BUILD_NUMBER'
+                sh 'docker push med00723/backend:$BUILD_NUMBER'
             }
         }
     stage('deploy image'){
