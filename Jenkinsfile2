@@ -58,14 +58,8 @@ pipeline {
             }
         }
   
-      stage('Deploying App to Kubernetes') {
-      steps{
-        
-            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
-      }
-    }
     
-    stage('Build image') {
+    stage('Deploying App to Kubernetes') {
       steps{
         script {
           dir('msign/backend'){
