@@ -57,11 +57,15 @@ pipeline {
                 sh 'docker push med00723/backend:$BUILD_NUMBER'
             }
         }
-    stage('Deploying App to Kubernetes') {
-      steps {
+  
+      stage('Deploying App to Kubernetes') {
+      steps{
         script {
+          dir('msign/backend'){
+            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
+            
+          }
           
-          kubernetesDeploy (configs: '/root/Projet/msign/backend', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://'])
         }
       }
     }
