@@ -57,18 +57,19 @@ pipeline {
                 sh 'docker push med00723/backend:$BUILD_NUMBER'
             }
         }
-    stage('deploy image'){
-        steps {  
-           sh 'node --version'
-            
-    //      
+    stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
         }
+      }
     }
 
 
   }
 
 }
+
 
 
 
