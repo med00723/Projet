@@ -64,6 +64,19 @@ pipeline {
             kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
       }
     }
+    
+    stage('Build image') {
+      steps{
+        script {
+          dir('msign/backend'){
+            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
+            sh 'kubectl apply -f back.yaml'
+            
+          }
+          
+        }
+      }
+    }
 
 
   }
