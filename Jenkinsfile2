@@ -60,8 +60,8 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubeconfig")
-          sh 'kubectl apply -f back.yaml'
+          
+          kubernetesDeploy (configs: '/root/Projet/msign/backend', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://'])
         }
       }
     }
