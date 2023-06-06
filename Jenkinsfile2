@@ -63,7 +63,7 @@ pipeline {
       steps{
         script {
           
-            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "kubernets")
+            kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "kubernets")
             sh 'kubectl apply -f back.yaml'
             
          
