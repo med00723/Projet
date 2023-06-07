@@ -63,7 +63,7 @@ pipeline {
       steps{
         script {
           dir('msign/backend'){
-            kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "k8sconfig")
+            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "k8sconfig")
            }
           
         }
