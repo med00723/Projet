@@ -63,10 +63,8 @@ pipeline {
       steps{
         script {
           
-            kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "kubernetes")
-            sh 'kubectl apply -f back.yaml'
-            
-         
+            kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "k8sconfig")
+           
           
         }
       }
