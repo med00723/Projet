@@ -63,7 +63,7 @@ pipeline {
     
        stage('Deploy App on k8s') {
       steps {
-            sshagent(['k8s']) {
+            sshagent(['k8s2']) {
             sh "scp -o StrictHostKeyChecking=no deployment.yaml root@kubemaster"
             script {
                 try{
