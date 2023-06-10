@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: med00723/backend:77
+        image: med00723/backend:84
         ports:
         - containerPort: 8081
         env:
