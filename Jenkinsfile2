@@ -59,20 +59,7 @@ pipeline {
         }
   
     
-    stage('Deploying App to Kubernetes') {
-      steps{
-        script {
-          sshagent(['k8s']) {
-             // some block
-                  }
-          
-          dir('msign/backend'){
-            kubernetesDeploy(configs: "back.yaml", kubeconfigId: "k8sconfig")
-           }
-          
-        }
-      }
-    }
+    
     
        stage('Deploy App on k8s') {
       steps {
