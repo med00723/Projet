@@ -61,20 +61,13 @@ pipeline {
     
     
     
-       stage('Deploy App on k8s') {
+     
+    stage('Deploying App to Kubernetes') {
       steps {
-            sshagent(['kube']) {
-            sh "scp -o StrictHostKeyChecking=no deployment.yaml root@k172.20.10.7"
-            script {
-                try{
-                    sh "ssh root@kubemaster kubectl create -f ."
-                }catch(error){
-                    sh "ssh root@kubemaster kubectl create -f ."
-            }
-}
+        script {
+          kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "k8sconfig")
         }
-      
-    }
+      }
     }
 
 
