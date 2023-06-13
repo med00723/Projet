@@ -64,7 +64,7 @@ pipeline {
        stage('Deploy App on k8s') {
       steps {
             sshagent(['kube']) {
-            sh "scp -o StrictHostKeyChecking=no deployment.yaml root@kubemaster"
+            sh "scp -o StrictHostKeyChecking=no deployment.yaml root@k172.20.10.7"
             script {
                 try{
                     sh "ssh root@kubemaster kubectl create -f ."
