@@ -16,13 +16,7 @@ pipeline {
       }
     }
 
-    stage('Build docker image'){
-        steps {  
-            
-    //      sh 'docker images'
-            sh 'docker build -t med00723/backend:v3 "./msign/backend"'
-        }
-    }
+
 
 
   }
