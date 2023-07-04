@@ -16,13 +16,16 @@ pipeline {
       }
     }
 
-    stage('SonarQube Analysis') {
-      def scannerHome = tool 'SonarScanner';
-        withSonarQubeEnv() {
-        sh "${scannerHome}/bin/sonar-scanner"
+    stage('Code Analysis') {
+      steps {
+        script {
+          def scannerHome = tool 'sonarqube';
+              withSonarQubeEnv("sonarqube") {
+              sh "${tool("sonarqube")}/bin/sonar-scanner"
+              }
+        }
+      }
     }
-  }
-
 
 
 
