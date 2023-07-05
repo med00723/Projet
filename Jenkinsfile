@@ -19,8 +19,6 @@ pipeline {
     stage('sonarqube Analysis') {
       steps {
         dir('msign/backend'){
-           nodejs(nodeJSInstallationName: 'nodejs'){
-                sh 'npm install'
                 withSonarQubeEnv("sonarqube") {
                     sh "npm install sonar-scanner"
                     sh "npm run sonar"
@@ -29,7 +27,7 @@ pipeline {
         }
        }
       }
-    }
+    
 
 
   }
