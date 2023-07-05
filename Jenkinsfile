@@ -18,15 +18,16 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
-        script {
-          def scannerHome = tool 'sonarqube';
-              withSonarQubeEnv("sonarqube") {
-              sh "${tool("sonarqube")}/bin/sonar-scanner"
+      nodejs(nodeJSInstallationName: 'nodejs'){
+        sh "npm i"
+        withSonarQubeEnv("sonarqube") {
+          sh "npm install sonar-scanner"
+          sh "npm run sonar"
+          
               }
         }
       }
     }
-
 
 
   }
