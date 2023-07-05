@@ -28,7 +28,7 @@ const crudSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: [true, "description can't be blank"],
+    required: [true, "description can't re be blank"],
   },
 });
 
