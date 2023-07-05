@@ -16,7 +16,7 @@ pipeline {
       }
     }
 
-    stage('Code Analysis') {
+    stage('sonarqube Analysis') {
       steps {
         dir('msign/backend'){
            nodejs(nodeJSInstallationName: 'nodejs'){
