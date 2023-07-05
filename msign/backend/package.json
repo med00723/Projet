@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+
+    
+    "test": "mocha './controllers/crudController.js'",
     "sonar":"sonar-scanner",
     "coverage": "./node_modules/.bin/nyc -r cobertura -r text-summary -r html npm test",
     "coverage-lcov": "./node_modules/.bin/nyc -r cobertura -r text-summary -r lcov npm test",
-    "test": "mocha './controllers/crudController.js'"
+    "start": "node index.js"
+    
   },
   "author": "",
   "license": "ISC",
