@@ -18,14 +18,16 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
-      nodejs(nodeJSInstallationName: 'nodejs'){
-        sh "npm i"
-        withSonarQubeEnv("sonarqube") {
-          sh "npm install sonar-scanner"
-          sh "npm run sonar"
+        dir('msign/backend'){
+           nodejs(nodeJSInstallationName: 'nodejs'){
+                sh "npm i"
+                withSonarQubeEnv("sonarqube") {
+                    sh "npm install sonar-scanner"
+                    sh "npm run sonar"
           
               }
         }
+       }
       }
     }
 
