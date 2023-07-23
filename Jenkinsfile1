@@ -1,0 +1,80 @@
+
+pipeline {
+
+  environment {
+    dockerimagename = "med00723/frontend"
+    dockerImage = ""
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+   
+  }
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git 'https://github.com/med00723/Projet.git'
+      }
+    }
+
+    stage('Build'){
+        steps {
+            dir('msign/client'){
+                sh 'npm install'
+              }
+        }
+    }
+    stage('Test'){
+        steps {
+            dir('msign/client'){
+                sh 'npm test'
+              }
+        }
+    }
+
+
+    stage('Build image') {
+      steps{
+        script {
+          dir('msign/client'){
+            sh 'docker build -t med00723/frontend:$BUILD_NUMBER .'
+            
+          }
+          
+        }
+      }
+    }
+
+
+     stage('login to dockerhub') {
+            steps{
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('push image to dockerhub') {
+            steps{
+                sh 'docker push med00723/frontend:$BUILD_NUMBER'
+            }
+        }
+  
+    
+    
+    
+     
+    stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment.yaml", kubeconfigId: "k8scluster")
+        }
+      }
+    }
+
+
+  }
+
+}
+
+
+
+
