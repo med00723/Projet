@@ -41,7 +41,7 @@
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
-		"test": "mocha './src/service-worker.js'"
+		"test": "mocha './src/App.js'"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -64,6 +64,8 @@
 	"description": "This project ",
 	"license": "ISC",
 	"devDependencies": {
+		"@babel/node": "^7.22.6",
+		"@babel/preset-env": "^7.22.9",
 		"mocha": "^10.2.0"
 	}
 }
