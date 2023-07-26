@@ -44,7 +44,7 @@
 		"deploy": "gh-pages -d build",
 		"coverage": "react-scripts test --coverage",
 		"test-sonar": "react-scripts test --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter",
-		"sonar": "node sonarqube-scanner.js"
+		"sonar": "node ./sonarqube-scanner.js"
 	},
 	"eslintConfig": {
 		"extends": [
