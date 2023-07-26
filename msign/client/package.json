@@ -20,7 +20,7 @@
 		"react-dom": "^17.0.2",
 		"react-ios-pwa-prompt": "^1.8.4",
 		"react-router-dom": "^6.2.2",
-		"react-scripts": "^5.0.0",
+		"react-scripts": "^2.1.3",
 		"web-vitals": "^2.1.4",
 		"workbox-background-sync": "^5.1.4",
 		"workbox-broadcast-update": "^5.1.4",
@@ -38,10 +38,13 @@
 	"scripts": {
 		"start": "react-scripts start --open",
 		"build": "react-scripts build",
+		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
-		"test": "mocha './src/App.js'"
+		"coverage": "react-scripts test --coverage",
+		"test-sonar": "react-scripts test --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter",
+		"sonar": "node sonarqube-scanner.js"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -66,6 +69,8 @@
 	"devDependencies": {
 		"@babel/node": "^7.22.6",
 		"@babel/preset-env": "^7.22.9",
-		"mocha": "^10.2.0"
+		"jest-sonar-reporter": "^2.0.0",
+		"mocha": "^10.2.0",
+		"sonarqube-scanner": "^3.0.1"
 	}
 }
