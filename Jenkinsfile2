@@ -32,7 +32,6 @@ pipeline {
               }
         }
     }
-    }
     stage('sonarqube analysis code'){
         steps {
             dir('msign/backend'){
