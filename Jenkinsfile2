@@ -69,15 +69,23 @@ pipeline {
     
     
      
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "deployment_back.yaml", kubeconfigId: "k8scluster")
-        }
+    
+
+    
+
+
+  }
+  post {
+    always {
+      script {
+        def pipelineStatus = currentBuild.result
+        def emailBody = pipelineStatus == 'SUCCESS' ? "La pipeline CI/CD a été exécutée avec succès." : "La pipeline CI/CD a été exécutée en échec."
+        emailext subject: "Rapport d'exécution de la pipeline CI/CD",
+                  body: emailBody,
+                  to: "medhajalouane@gmail.com",
+                  attachLog: true
       }
     }
-
-
   }
 
 }
