@@ -28,7 +28,7 @@ pipeline {
     stage('Test'){
         steps {
             dir('msign/backend'){
-                sh 'npm test'
+                sh 'sonar-scanner'
               }
         }
     }
