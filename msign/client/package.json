@@ -44,7 +44,8 @@
 		"deploy": "gh-pages -d build",
 		"coverage": "react-scripts test --coverage",
 		"test-sonar": "react-scripts test --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter",
-		"sonar": "node ./sonarqube-scanner.js"
+		"sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner",
+		"sonar":"sonar-scanner"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -71,6 +72,7 @@
 		"@babel/preset-env": "^7.22.9",
 		"jest-sonar-reporter": "^2.0.0",
 		"mocha": "^10.2.0",
+		"sonar-scanner": "^3.1.0",
 		"sonarqube-scanner": "^3.0.1"
 	}
 }
