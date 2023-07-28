@@ -29,10 +29,11 @@ pipeline {
         steps {
             dir('msign/backend'){
                 sh 'npm test'
+                
               }
         }
     }
-    stage('sonarqube analysis code'){
+    stage('sonarqube analysis codes'){
         steps {
             dir('msign/backend'){
                 sh 'npm run sonar'
