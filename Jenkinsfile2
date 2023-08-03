@@ -2,9 +2,11 @@
 pipeline {
 
   environment {
-    dockerimagename = "med00723/backend"
+    dockerimagename = ""
     dockerImage = ""
+    backendImageName = "med00723/backend"
     DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+    backendImageTag = "${BUILD_NUMBER}"
    
   }
 
@@ -46,7 +48,7 @@ pipeline {
       steps{
         script {
           dir('msign/backend'){
-            sh 'docker build -t med00723/backend:$BUILD_NUMBER .'
+            sh "docker build -t ${backendImageName}:${backendImageTag} ."
             
           }
           
@@ -62,16 +64,23 @@ pipeline {
         }
         stage('push image to dockerhub') {
             steps{
-                sh 'docker push med00723/backend:$BUILD_NUMBER'
+                sh "docker push ${backendImageName}:${backendImageTag}"
             }
         }
   
+    stage('Docker Remove Backend Image') {
+      steps {
+        sh "docker rmi ${backendImageName}:${backendImageTag}"
+      }
     
-    
-    
-     
-    
-
+    stage('Deploying App to Kubernetes') {
+      steps {
+        script {
+          sh "sed -i 's|__IMAGE_NAME__|${backendImageName}|g; s|__IMAGE_TAG__|${backendImageTag}|g' deployment_back.yaml"
+          kubernetesDeploy(configs: "deployment_back.yaml", kubeconfigId: "k8scluster")
+        }
+      }
+    }
     
 
 
