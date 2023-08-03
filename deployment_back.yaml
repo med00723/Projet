@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: backend1
-        image: med00723/backend:84
+        image: __IMAGE_NAME__:__IMAGE_TAG__
+        imagePullPolicy: Always
         ports:
         - containerPort: 8081
         env:
