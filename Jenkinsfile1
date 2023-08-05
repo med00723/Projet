@@ -2,9 +2,11 @@
 pipeline {
 
   environment {
-    dockerimagename = "med00723/frontend"
+    dockerimagename = ""
     dockerImage = ""
     DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+    frontendImageName = "med00723/frontend"
+    frontendImageTag = "${BUILD_NUMBER}"
    
   }
 
@@ -38,7 +40,7 @@ pipeline {
       steps{
         script {
           dir('msign/client'){
-            sh 'docker build -t med00723/frontend:$BUILD_NUMBER .'
+            sh "docker build -t ${frontendImageName}:${frontendImageTag} ."
             
           }
           
@@ -54,17 +56,22 @@ pipeline {
         }
         stage('push image to dockerhub') {
             steps{
-                sh 'docker push med00723/frontend:$BUILD_NUMBER'
+                sh "docker push ${frontendImageName}:${frontendImageTag}"
             }
         }
   
-    
+    stage('Docker Remove Backend Image') {
+      steps {
+        sh "docker rmi ${frontendImageName}:${frontendImageTag}"
+      }
+    }
     
     
      
     stage('Deploying App to Kubernetes') {
       steps {
         script {
+          sh "sed -i 's|__IMAGE_NAME__|${frontendImageName}|g; s|__IMAGE_TAG__|${frontendImageTag}|g' deployment_front.yaml"
           kubernetesDeploy(configs: "deployment_front.yaml", kubeconfigId: "k8scluster")
         }
       }
