@@ -15,10 +15,19 @@ spec:
         app: mongo
     spec:
       containers:
-        - name: mongo
-          image:  mongo
-          ports:
-            - containerPort: 27017
+      - name: mongo
+        image: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-vol
+          mountPath: /app/database
+      volumes:
+       - name: mongo-vol
+         persistentVolumeClaim:
+          claimName: app-conf-claim
+
+
 ---
 
 apiVersion: v1
@@ -28,10 +37,7 @@ metadata:
 spec:
   selector:
     app: mongo
-  type: NodePort
   ports:
-  - name: http
-    protocol: TCP
-    port: 27017
-  type: LoadBalancer
-      
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
