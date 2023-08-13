@@ -17,15 +17,16 @@ spec:
       containers:
       - name: mongo
         image: mongo
+
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
         ports:
         - containerPort: 27017
-        volumeMounts:
-        - name: mongo-vol
-          mountPath: /app/database
-      volumes:
-       - name: mongo-vol
-         persistentVolumeClaim:
-          claimName: app-conf-claim
 
 
 ---
@@ -33,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-services
+  name: mongo-service
 spec:
   selector:
     app: mongo
