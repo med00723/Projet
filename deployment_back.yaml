@@ -33,7 +33,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: backend
+    app: backend1
   ports:
     - protocol: TCP
       port: 8081
