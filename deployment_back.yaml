@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment1
+  name: backend-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend1
+      app: backend
   template:
     metadata:
       labels:
-        app: backend1
+        app: backend
     spec:
       containers:
-      - name: backend1
+      - name: backend
         image: __IMAGE_NAME__:__IMAGE_TAG__
         imagePullPolicy: Always
         ports:
@@ -34,7 +34,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: backend1
+    app: backend
   ports:
     - protocol: TCP
       port: 8081
