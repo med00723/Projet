@@ -30,7 +30,8 @@ spec:
     app: mongo
   type: NodePort
   ports:
-    - protocol: TCP
-      port: 27017
-      targetPort: 27017
-      nodePort: 31747
+  - name: http
+    protocol: TCP
+    port: 27017
+  type: LoadBalancer
+      
