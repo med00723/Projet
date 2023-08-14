@@ -46,7 +46,6 @@
 		"test-sonar": "react-scripts test --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter",
 		"sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner",
 		"sonar": "sonar-scanner"
-		
 	},
 	"eslintConfig": {
 		"extends": [

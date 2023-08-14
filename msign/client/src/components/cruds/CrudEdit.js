@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { get, patch } from "axios";
+import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 function CrudEdit(props) {
@@ -20,7 +20,7 @@ function CrudEdit(props) {
 		function () {
 			async function updateCrud() {
 				try {
-					const response = await get(`/api/cruds/${_id}`);
+					const response = await axios.get(`/api/cruds/${_id}`);
 					setCrud(response.data);
 				} catch (error) {
 					console.log(error);
@@ -36,7 +36,7 @@ function CrudEdit(props) {
 		event.preventDefault();
 		async function updateCrud() {
 			try {
-				await patch(`/api/cruds/${crud._id}`, crud);
+				await axios.patch(`/api/cruds/${crud._id}`, crud);
 				navigate(`/cruds/${crud._id}`);
 			} catch (error) {
 				console.log(error);

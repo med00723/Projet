@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { post } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function CrudAdd(props) {
@@ -20,7 +20,7 @@ function CrudAdd(props) {
 		//if (!crud.companyName || !crud.email) return;
 		async function postCrud() {
 			try {
-				const response = await post("/api/cruds/", crud);
+				const response = await axios.post("/api/cruds/", crud);
 				navigate(`/cruds/${response.data._id}`);
 			} catch (error) {
 				console.log("error", error);
