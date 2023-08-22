@@ -77,9 +77,9 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "mongo_db.yaml", kubeconfigId: "k8scluster1")
+          kubernetesDeploy(configs: "mongo_db.yaml", kubeconfigId: "k8scluster2")
           sh "sed -i 's|__IMAGE_NAME__|${backendImageName}|g; s|__IMAGE_TAG__|${backendImageTag}|g' deployment_back.yaml"
-          kubernetesDeploy(configs: "deployment_back.yaml", kubeconfigId: "k8scluster1")
+          kubernetesDeploy(configs: "deployment_back.yaml", kubeconfigId: "k8scluster2")
         }
       }
     }
