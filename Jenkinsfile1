@@ -75,8 +75,20 @@ pipeline {
           kubernetesDeploy(configs: "deployment_front.yaml", kubeconfigId: "k8scluster1")
         }
       }
-    }
+    }*
 
+post {
+    always {
+      script {
+        def pipelineStatus = currentBuild.result
+        def emailBody = pipelineStatus == 'SUCCESS' ? "La pipeline CI/CD a été exécutée avec succès." : "La pipeline CI/CD a été exécutée en échec."
+        emailext subject: "Rapport d'exécution de la pipeline CI/CD",
+                  body: emailBody,
+                  to: "medhajalouane@gmail.com",
+                  attachLog: true
+      }
+    }
+  }
 
   }
 
