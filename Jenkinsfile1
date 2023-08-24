@@ -75,9 +75,12 @@ pipeline {
           kubernetesDeploy(configs: "deployment_front.yaml", kubeconfigId: "k8scluster1")
         }
       }
-    }*
+    }
 
-post {
+
+
+  }
+  post {
     always {
       script {
         def pipelineStatus = currentBuild.result
@@ -88,8 +91,6 @@ post {
                   attachLog: true
       }
     }
-  }
-
   }
 
 }
