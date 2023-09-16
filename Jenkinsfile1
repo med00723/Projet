@@ -72,7 +72,7 @@ pipeline {
       steps {
         script {
           sh "sed -i 's|__IMAGE_NAME__|${frontendImageName}|g; s|__IMAGE_TAG__|${frontendImageTag}|g' deployment_front.yaml"
-          kubernetesDeploy(configs: "deployment_front.yaml", kubeconfigId: "k8scluster1")
+          kubernetesDeploy(configs: "deployment_front.yaml", kubeconfigId: "k8scluster")
         }
       }
     }
