@@ -26,7 +26,7 @@ const Navbar = () => {
     <header class="masthead">
 
         <div class="container">
-            <div class="masthead-subheading">Bienvenue sur notre applicati .!</div>
+            <div class="masthead-subheading">Bienvenue sur notre application.!</div>
         </div>
     </header>
 
