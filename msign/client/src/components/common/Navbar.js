@@ -27,7 +27,7 @@ const Navbar = () => {
 
         <div class="container">
 
-            <div class="masthead-subheading">Bienvenue sur notre application. test </div>
+            <div class="masthead-subheading">Bienvenue sur notre application. </div>
 
         </div>
     </header>
